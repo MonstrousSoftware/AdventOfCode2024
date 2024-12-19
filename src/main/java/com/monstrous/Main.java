@@ -7,6 +7,7 @@ public class Main {
         System.out.println("Advent of Code 2024!");
 
         //new Day1();
-        new Day2();
+        //new Day2();
+        new Day3();
     }
 }
