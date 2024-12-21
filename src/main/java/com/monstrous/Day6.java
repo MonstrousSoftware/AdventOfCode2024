@@ -12,7 +12,7 @@ public class Day6 {
         System.out.println("Day 6");
         final long startTime = System.currentTimeMillis();
 
-        FileInput input = new FileInput("data/day6.txt");
+        FileInput input = new FileInput("data/day6a.txt");
 
         int height = input.lines.size();
         int width = input.lines.get(0).length();
@@ -73,7 +73,7 @@ public class Day6 {
         int steps = 0;
         for(int y = 0; y < height; y++){
             for(int x = 0; x < width; x++){
-                if(grid[y][x] == 'X'){
+                if(grid[y][x] == 'X' || grid[y][x] == '^'){
                     steps++;
                     grid[y][x] = '.';
                 }
@@ -83,7 +83,7 @@ public class Day6 {
     }
 
     private int findObstacleLocations(char[][] grid, int width, int height){
-        int numLocations = 0;
+
         int startx = 0, starty = 0;
         for(int y = 0; y < height; y++){
             for(int x = 0; x < width; x++){
@@ -93,6 +93,8 @@ public class Day6 {
                 }
             }
         }
+
+        int numLocations = 0;
         for(int y = 0; y < height; y++){
             for(int x = 0; x < width; x++){
                 if(grid[y][x] == '.'){
@@ -118,7 +120,7 @@ public class Day6 {
             if (tx < 0 || ty < 0 || tx >= width || ty >= height)
                 return false;
             if (grid[ty][tx] != '#' && grid[ty][tx] != 'O') {
-                int key = tx | (ty << 8) | (dir<<13);
+                int key = tx | (ty << 16) | (dir<<20);
                 if(grid[ty][tx] == 'X'){
                     if(visited.get(key) != null)    // already been here? with same direction?
                         return true;
