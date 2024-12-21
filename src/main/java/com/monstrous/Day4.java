@@ -12,7 +12,7 @@ public class Day4 {
 
         FileInput input = new FileInput("data/day4.txt");
 
-        width = input.lines.getFirst().length();
+        width = input.lines.get(0).length();
         height = input.lines.size();
         grid = new char[height][width];
 
